@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Firmbee.com - Free Project Management Platform for remote teams"> 
+    <title>Name of company</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/0e035b9984.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top pb-3">
+        <div class="container">
+          <a class="navbar-brand" href="{% url 'main' %}"><img src="{% static 'img/company-logo.png' %}" alt=""></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="{% url 'main' %}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'about' %}">About us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'protfolio' %}">Portfolio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'blog' %}">Blog</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <main>
+          <div class="container">
+            <div class="row">
+                <div class="main col-sm-8">
+                {% for foo in blog %}
+                      <div class="single-post">
+                        <h1 class="post-title">{{ foo.title }}</h1>
+                        <div class="line"></div>
+                        <div class="post-meta">
+                          <div class="post-author"><i class="far fa-user-circle"></i>by {{ foo.author }}</div>
+                          <div class="post-date"><i class="far fa-calendar-alt"></i> {{ foo.data }}</div>
+                        </div>
+                        <div class="line"></div>
+                        <p class="post-sub-title">{{ foo.started }}</p>
+                        <img class="post-img" src="{% foo.img.url %}" alt="">
+                        <p class="text-gray">
+                          {{ foo.body }}
+                        </p>
+                          <blockquote class="blockquote d-flex">
+                            <div class="icon"><i class="fas fa-feather"></i></div>
+                            <div class="text">
+                            <p class="quote-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                            <p class="quote-author text-muted">Someone famous</p>
+                            </div>
+                          </blockquote>
+                          <p class="text-gray">Tab iste quia, consequuntur repellendus perspiciatis nesciunt labore! Quidem fuga velit culpa et commodi totam voluptates non natus quasi saepe cupiditate, dolore, repellat explicabo! Quaerat, doloremque adipisci! Sequi laboriosam placeat sit magnam aspernatur, culpa maxime. Corrupti natus totam error ducimus aspernatur sit? Quas odit numquam porro sit repellat quidem in aliquid ratione qui nostrum iste, vitae eaque hic, incidunt vero eveniet eligendi voluptates quod, aut reiciendis. Delectus ea totam earum itaque dolorum ex voluptatibus rerum blanditiis aspernatur quo, illum provident eaque, natus consequatur dolor repellendus asperiores pariatur facere rem unde nisi sapiente! Consequuntur vel minima repellendus nihil provident. Animi nisi repudiandae fugiat est magnam voluptatem earum sequi libero necessitatibus vero? Provident dolor possimus itaque reiciendis repudiandae explicabo ullam, culpa laborum consequatur pariatur fuga vitae quos dolorem exercitationem at doloribus distinctio reprehenderit non praesentium nihil doloremque saepe quidem molestiae necessitatibus!
+                        <div class="share">
+                          <a class="fb" href="facebook.com"><i class="fab fa-facebook-f"></i> FACEBOOK</a>
+                          <a class="google" href="google.com"> <i class="fab fa-google-plus-g"></i> GOOGLE+</a>
+                          <a class="twit" href="twitter.com"><i class="fab fa-twitter"></i> TWITTER</a>
+                          <a class="link" href="linkdein.com"><i class="fab fa-linkedin-in"></i> LINKEDIN</a>
+                          <a class="pin" href="pinterest.com"><i class="fab fa-pinterest-p"></i> PINTEREST</a>
+                        </div>
+                        <div class="navigation">
+                          <a class="prew"><i class="fas fa-chevron-left"></i> PREVIOUS</a>
+                          <a class="next">NEXT <i class="fas fa-chevron-right"></i></a>
+                        </div>
+                        <div class="line"></div>
+                      </div>
+                    {% endfor %}
+                </div>
+            </div>
+          </div>
+      </main>
+          <footer>
+            <div class="container">
+              <div class="footer-main">
+                <div class="footer-about">
+                  <div class="logo">
+                    <img src="{% static 'img/company-logo_white.png' %}" alt="">
+                  </div>
+                  <p>Onze visie is om een unieke multi-klant oplossing te bieden voor zowel bedrijven als particulieren.
+                    Ons doel is onze klanten te ontzorgen rond hun zoektocht naar een ideaal gelegen rustige werkplek of een tekort aan opslagplaats .
+                    </p>
+                </div>
+                  <br>
+                </div>
+                <div class="footer-last-tweet">
+                  <p class="title">Last Tweet</p>
+                  <div class="line"></div>
+                  <p class="tweet">Onze visie is om een unieke multi-klant oplossing te bieden voor zowel bedrijven als particulieren.</p>
+                  <p class="tweet">Onze visie is om een unieke multi-klant oplossing te bieden voor zowel bedrijven als particulieren.</p>
+                </div>
+              </div>
+            </div>
+            <div class="copyright pt-4 text-muted text-center">
+              <p>&copy; 2022 | Created Backend by <a href="https://instagram.com/ezozbekdev/"  target="_blank">Ezozbek</a></p>
+            </div>
+          </footer>
+    <div class="fb2022-copy">Fbee 2022 copyright</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <script src="{% static 'js/addshadow.js' %}"></script>
+    <script src="{% static 'js/slides.js' %}"></script>
+</body>
+</html>

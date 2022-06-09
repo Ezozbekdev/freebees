@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Name of company</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/0e035b9984.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top pb-3">
+        <div class="container">
+          <a class="navbar-brand" href="{% url 'main' %}"><img src="{% static 'img/company-logo.png' %}" alt=""></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="{% url 'main' %}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="{% url 'about' %}">About us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'protfolio' %}">Portfolio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'blog' %}">Blog</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <main>
+          <div class="container">
+            <div class="row">
+                <div class="main col-sm-8">
+                    {% for foo in about %}
+                      <div class="about-page">
+                        <h1>{{ foo.title }}</h1>
+                        <div class="line"></div>
+                        <p>{{ foo.short }}</p>
+                        <div class="line"></div>
+                        <img src='{{ foo.imgs.url }}' class="d-block w-100" alt="..." />
+                        <p>{{ foo.text }}</p>
+                        <br>
+                        <div class="features d-flex justify-content-around py-5">
+                          <div class="feature-item text-center">
+                            <div class="item-icon"><i class="fas fa-user"></i></div>
+                            <p class="item-count">{{ foo.happy_clents }}</p>
+                            <p class="item-title">Happy Clients</p>
+                          </div>
+                          <div class="feature-item text-center">
+                            <div class="item-icon"><i class="far fa-star"></i></div>
+                            <p class="item-count">{{ foo.awords }}</p>
+                            <p class="item-title">Awoards</p>
+                          </div>
+                          <div class="feature-item text-center">
+                            <div class="item-icon"><i class="fas fa-check"></i></div>
+                            <p class="item-count">{{ foo.complated_project }}</p>
+                            <p class="item-title">Completed Projects</p>
+                          </div>
+                        </div>
+                      </div>
+                    {% endfor %}
+                </div>
+                <div class="sidebar col-sm-4">
+                    <div class="sidebar-benefits-items py-5">
+                      <h3>Benefits</h3>
+                      <div class="sidebar-benefits-item">
+                        <div class="sidebar-benefits-item-title d-flex">
+                          <div class="icon"><img src="{% static 'img/icons/asset-1.svg' %}" alt=""></div>
+                          <p class="title">Custom/Mobile App Development & Consulting</p>
+                        </div>
+                        <div class="text-gray">
+                          <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo</p>
+                        </div>
+                      </div>
+                      <div class="sidebar-benefits-item">
+                        <div class="sidebar-benefits-item-title d-flex">
+                          <div class="icon"><img src="{% static 'img/icons/asset-1.svg' %}" alt=""></div>
+                          <p class="title">Custom/Mobile App Development & Consulting</p>
+                        </div>
+                        <div class="text-gray">
+                          <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo</p>
+                        </div>
+                      </div>
+                      <div class="sidebar-benefits-item">
+                        <div class="sidebar-benefits-item-title d-flex">
+                          <div class="icon"><img src="{% static 'img/icons/asset-1.svg' %}" alt=""></div>
+                          <p class="title">Custom/Mobile App Development & Consulting</p>
+                        </div>
+                        <div class="text-gray">
+                          <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo</p>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+      </main>
+      <footer>
+        <div class="container">
+          <div class="footer-main">
+            <div class="footer-about">
+              <div class="logo">
+                <img src="{% static 'img/company-logo_white.png' %}" alt="">
+              </div>
+              <p>Lorem ipsum dolor sit amet. Hic accusantium molestiae quo dolorum dolor ut voluptas quam aut nobis doloremque. Et iusto sapiente sed assumenda iste rem dolores repellendus qui sunt qui optio provident non tempore porro aut asperiores cupiditate.
+                </p>
+            </div>
+            <br>
+            <div class="footer-links">
+              <p class="title">Quiq Links</p>
+              <div class="line"></div>
+              <div class="links">
+                <a href="{% url 'main' %}">FAQ</a>
+                <a href="{% url 'about' %}">About us</a>
+                <a href="">Contact</a>
+              </div>
+            </div>
+            <div class="footer-last-tweet">
+              <p class="title">Last Tweet</p>
+              <div class="line"></div>
+              <p class="tweet">Et vero Quis et aspernatur maiores a voluptas omnis est ipsum similique. </p>
+              <p class="tweet">Aut omnis deserunt et ratione doloribus et ullam saepe ea magnam neque vel voluptas sint rem sunt aliquam!</p>
+            </div>
+          </div>
+        </div>
+        <div class="copyright pt-4 text-muted text-center">
+          <p>&copy; 2022 | Created by <a href="https://www.instagram.com/ezozbekdev/" >Ezozbek</a></p>
+        </div>
+      </footer>
+    <div class="fb2022-copy">Fbee 2022 copyright</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <script src="{% static 'js/addshadow.js' %}"></script>
+    <script src="{% static 'js/slides.js' %}"></script>
+</body>
+</html>
